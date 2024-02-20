@@ -36,13 +36,13 @@ const Footer = () => {
       </div>
 
       <div className="flex justify-around py-7 gap-2">
-        <div className="flex items-center">
-            <span className="px-5">Help us in serving you better</span>
+        <div className="md:flex md:items-center hidden md:d-block ">
+            <span className="px-5 ">Help us in serving you better</span>
             <Button className="bg-white text-black hover:bg-slate-200">Give Feedback</Button>
         </div>
         <div className="flex flex-col items-center cursor-pointer">
             <span>Follow us</span>
-            <div className="flex gap-4">
+            <div className="flex gap-4 py-3">
                 <Facebook />
                 <Twitter />
                 <Instagram />
