@@ -11,6 +11,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Extra check for deployment
+app.get("/health", async (req: Request, res: Response) => {
+    res.send({message: "health OK!"});
+})
 
 app.use("/api/my/user", myUserRoute);
 
