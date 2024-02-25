@@ -6,10 +6,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { Separator } from "@radix-ui/react-separator";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import MobileNavLinks from "./MobileNavLinks";
+import { Separator } from "./ui/separator";
 
 const MobileNav = () => {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();
@@ -32,7 +32,7 @@ const MobileNav = () => {
           )}
         </SheetTitle>
 
-        <Separator className="my-4" />
+        <Separator />
 
         <SheetDescription className="flex flex-col gap-4">
           {isAuthenticated ? (

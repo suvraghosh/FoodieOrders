@@ -5,10 +5,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { Separator } from "@radix-ui/react-separator";
 import { CircleUserRound } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
@@ -20,18 +20,27 @@ const UsernameMenu = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent  className="p-4 bg-white rounded shadow">
-        <DropdownMenuItem className="outline-none">
+        
+        {/* User Profile Link */}
+        <DropdownMenuItem className="outline-none m-1">
           <Link to="/user-profile" className="font-bold hover:text-orange-500">
             User Profile
           </Link>
         </DropdownMenuItem>
 
-        <Separator className="my-4"/>
+        {/* Manage Restaurant Link */}
+        <DropdownMenuItem className="outline-none m-1">
+          <Link to="/manage-restaurant" className="font-bold hover:text-orange-500">
+            Manage Restaurant
+          </Link>
+        </DropdownMenuItem>
 
-        <DropdownMenuItem className="outline-none">
+        <Separator />
+
+        <DropdownMenuItem className="outline-none m-1 flex items-center">
           <Button
             onClick={() => logout()}
-            className="flex flex-1 font-bold bg-orange-400 hover:border hover:border-orange-400 hover:bg-white hover:text-black"
+            className="mt-2 flex flex-1 font-bold bg-orange-400 hover:border hover:border-orange-400 hover:bg-white hover:text-black"
           >
             Logout
           </Button>
