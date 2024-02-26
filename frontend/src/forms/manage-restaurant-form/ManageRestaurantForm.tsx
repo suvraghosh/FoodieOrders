@@ -10,6 +10,7 @@ import ImageSection from "./ImageSection";
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
 
+
 // Form validation using zod
 const formSchema = z.object({
   restaurantName: z.string({
@@ -42,7 +43,7 @@ const formSchema = z.object({
   imageFile: z.instanceof(File, { message: "Image file is required" }),
 });
 
-type restaurantFormData = z.infer<typeof formSchema>;
+type RestaurantFormData = z.infer<typeof formSchema>;
 
 type Props = {
   onSave: (restaurantFormData: FormData) => void;
@@ -50,22 +51,43 @@ type Props = {
 };
 
 const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
-  const form = useForm<restaurantFormData>({
+  const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      //   restaurantName: "",
-      //   city: "",
-      //   country: "",
-      //   deliveryPrice: 0,
-      //   estimatedDeliveryTime: 0,
       cuisines: [],
       menuItems: [{ name: "", price: 0 }],
     },
   });
 
   // onSubmit function
-  const onSubmit = async (formDataJson: restaurantFormData) => {
+  const onSubmit = async (formDataJson: RestaurantFormData) => {
     // Convert formDataJson to a new FormData Object
+    const formData = new FormData();
+
+    formData.append("restaurantName", formDataJson.restaurantName);
+    formData.append("city", formDataJson.city);
+    formData.append("country", formDataJson.country);
+    
+    formData.append(
+      "deliveryPrice",
+      (formDataJson.deliveryPrice * 100).toString()
+    );
+    formData.append(
+      "estimatedDeliveryTime",
+      formDataJson.estimatedDeliveryTime.toString()
+    );
+    formDataJson.cuisines.forEach((cuisine, index)=>{
+      formData.append(`cuisines[${index}]`, cuisine);
+    });
+    formDataJson.menuItems.forEach((menuItem, index)=>{
+      formData.append(`menuItems[${index}][name]`, menuItem.name);
+      formData.append(`menuItems[${index}][price]`, (menuItem.price * 100).toString());
+    });
+
+    if (formDataJson.imageFile) {
+      formData.append(`imageFile`, formDataJson.imageFile);
+    }
+    onSave(formData);
   };
 
   return (
@@ -79,6 +101,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
         <CuisinesSection />
         <Separator />
         <MenuSection />
+        <Separator />
         <ImageSection />
 
         {/* Button */}
