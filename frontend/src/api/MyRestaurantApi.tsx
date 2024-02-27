@@ -88,6 +88,7 @@ export const useUpdateMyRestaurant = () => {
     restaurantFormData: FormData
   ): Promise<Restaurant> => {
     const accessToken = await getAccessTokenSilently();
+
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "PUT",
       headers: {
@@ -99,6 +100,8 @@ export const useUpdateMyRestaurant = () => {
     if (!response) {
       throw new Error("Failed to update restaurant");
     }
+
+    return response.json();
   };
 
   const {
