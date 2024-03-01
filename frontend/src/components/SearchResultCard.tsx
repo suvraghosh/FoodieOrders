@@ -13,7 +13,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
       to={`/detail/${restaurant._id}`}
       className="grid lg:grid-cols-[2fr_3fr] gap-5 group"
     >
-      <AspectRatio aria-rowspan={16 / 6}>
+      <AspectRatio ratio={16 / 6}>
         <img
           alt="food image"
           src={restaurant.imageUrl}
