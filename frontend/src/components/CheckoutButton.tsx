@@ -11,9 +11,10 @@ import { useGetMyUser } from "@/api/MyUserApi";
 type Props = {
     onCheckout: (userFormData: UserFormData) => void;
     disabled: boolean;
+    isLoading: boolean;
   };
 
-const CheckoutButton = ({ onCheckout, disabled }: Props) => {
+const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
   const {
     isAuthenticated,
     isLoading: isAuthLoading,
@@ -34,20 +35,20 @@ const CheckoutButton = ({ onCheckout, disabled }: Props) => {
 
   if (!isAuthenticated) {
     return (
-      <Button onClick={onLogin} className="bg-orange-600 flex-1">
+      <Button onClick={onLogin} className="flex-1 bg-orange-600">
         Log in to check out
       </Button>
     );
   }
 
-  if (isAuthLoading || !currentUser) {
+  if (isAuthLoading || !currentUser || isLoading) {
     return <LoadingButton />;
   }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button disabled={disabled} className="bg-orange-600 flex-1">
+        <Button disabled={disabled} className="flex-1 bg-orange-600">
           Go to Check out
         </Button>
       </DialogTrigger>
