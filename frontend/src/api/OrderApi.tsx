@@ -10,7 +10,7 @@ type CheckoutSessionRequest = {
     name: string;
     quantity: string;
   }[];
-  deliverDetails: {
+  deliveryDetails: {
     email: string;
     name: string;
     addressLine1: string;
