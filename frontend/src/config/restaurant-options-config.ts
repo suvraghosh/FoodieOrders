@@ -1,5 +1,5 @@
 export const cuisineList = [
-    "American",
+  "American",
   "BBQ",
   "Breakfast",
   "Burgers",
@@ -25,4 +25,4 @@ export const cuisineList = [
   "Tacos",
   "Tapas",
   "Vegan",
-]
+];
