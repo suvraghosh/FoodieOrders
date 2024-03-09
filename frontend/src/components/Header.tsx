@@ -4,12 +4,12 @@ import MainNav from "./MainNav";
 
 const Header = () => {
   return (
-    <div className="border-b-2 border-b-orange-500 py-6">
-        <div className="container mx-auto flex justify-between items-center">
+    <div className="py-6 bg-[#333] text-white">
+        <div className="container flex items-center justify-between mx-auto">
             <Link 
                 to="/" 
                 className="text-3xl font-bold tracking-tight text-orange-400">
-                CheesyWheels
+                Cheesy<span className="text-white">Wheels</span>
             </Link>
 
             <div className="md:hidden">
