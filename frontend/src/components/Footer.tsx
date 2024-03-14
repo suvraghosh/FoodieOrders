@@ -37,17 +37,33 @@ const Footer = () => {
 
       <div className="flex justify-around gap-2 py-7">
         <div className="hidden md:flex md:items-center md:d-block ">
-            <span className="px-5 ">Help us in serving you better</span>
-            <Button className="text-black bg-white hover:bg-slate-200">Give Feedback</Button>
+          <span className="px-5 ">Help us in serving you better</span>
+          <Button className="flex items-center gap-1 px-4 py-2 font-semibold tracking-widest duration-300 bg-blue-600 rounded-md cursor-pointer hover:bg-blue-500 hover:gap-2 hover:translate-x-3">
+            Give Feedback
+            <svg
+              className="w-5 h-5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </Button>
         </div>
         <div className="flex flex-col items-center cursor-pointer">
-            <span>Follow us</span>
-            <div className="flex gap-4 py-3">
-                <Facebook />
-                <Twitter />
-                <Instagram />
-                <Linkedin />
-            </div>
+          <span>Follow us</span>
+          <div className="flex gap-4 py-3">
+            <Facebook />
+            <Twitter />
+            <Instagram />
+            <Linkedin />
+          </div>
         </div>
       </div>
     </div>
