@@ -1,4 +1,5 @@
 import { useGetMyOrders } from "@/api/OrderApi";
+import Loading from "@/components/Loading";
 import OrderStatusDetail from "@/components/OrderStatusDetail";
 import OrderStatusHeader from "@/components/OrderStatusHeader";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
@@ -7,7 +8,7 @@ const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return "Loading...";
+    return <Loading />;
   }
 
   if (!orders || orders.length === 0) {

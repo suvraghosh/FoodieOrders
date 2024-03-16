@@ -1,5 +1,6 @@
 import { useSearchRestaurants } from "@/api/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
+import Loading from "@/components/Loading";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
@@ -70,7 +71,7 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    <span>Loading ...</span>;
+    return <Loading />;
   }
   if (!results?.data || !city) {
     return <span>No results found</span>;
@@ -97,7 +98,7 @@ const SearchPage = () => {
           onReset={resetSearch}
         />
 
-        <div className="flex justify-between flex-col gap-3 lg:flex-row">
+        <div className="flex flex-col justify-between gap-3 lg:flex-row">
           <SearchResultInfo total={results.pagination.total} city={city} />
           <SortOptionDropdown
             sortOption={searchState.sortOption}

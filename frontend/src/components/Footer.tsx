@@ -38,10 +38,10 @@ const Footer = () => {
       <div className="flex justify-around gap-2 py-7">
         <div className="hidden md:flex md:items-center md:d-block ">
           <span className="px-5 ">Help us in serving you better</span>
-          <Button className="flex items-center gap-1 px-4 py-2 font-semibold tracking-widest duration-300 bg-blue-600 rounded-md cursor-pointer hover:bg-blue-500 hover:gap-2 hover:translate-x-3">
+          <Button className="flex items-center gap-1 px-4 py-2 font-semibold tracking-widest duration-300 bg-[#ffffff00] border border-[#3654ff] rounded-md cursor-pointer hover:[#3654ff] hover:gap-2">
             Give Feedback
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 transition-all"
               stroke="currentColor"
               stroke-width="1.5"
               viewBox="0 0 24 24"

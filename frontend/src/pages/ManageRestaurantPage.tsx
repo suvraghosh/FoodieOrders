@@ -4,6 +4,7 @@ import {
   useGetMyRestaurantOrders,
   useUpdateMyRestaurant,
 } from "@/api/MyRestaurantApi";
+import Loading from "@/components/Loading";
 import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
@@ -11,13 +12,17 @@ import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestauran
 const ManageRestaurantPage = () => {
   const { createRestaurant, isLoading: isCreateLoading } =
     useCreateMyRestaurant();
-  const { restaurant } = useGetMyRestaurant();
+  const { restaurant, isLoading } = useGetMyRestaurant();
   const { updateRestaurant, isLoading: isUpdateLoading } =
     useUpdateMyRestaurant();
 
   const { orders } = useGetMyRestaurantOrders();
 
   const isEditing = !!restaurant;
+
+  if(isLoading){
+    return <Loading />;
+  }
 
   return (
     <Tabs defaultValue="orders">
